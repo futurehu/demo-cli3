@@ -36,10 +36,17 @@ export default {
   },
   computed: {},
   created() {
+    this.getData()
     this.$nextTick(() => {});
   },
 
-  methods: {}
+  methods: {
+    getData(){
+      this.$fetch('/nljz/nljz/question/head/wxxcx?gz_id=8').then(res=>{
+
+      })
+    }
+  }
 };
 </script>
 <style lang="less" scoped>
