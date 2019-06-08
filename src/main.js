@@ -1,9 +1,9 @@
 import Vue from 'vue'
 import App from './App.vue'
-import router from './router';
+import {router} from './router';
 import store from './store'
 import 'amfe-flexible';//设置rem基准值
-import '@/common/css/base.css'
+import './assets/css/reset.less'//移动端初始化样式
 import { Button, Cell } from 'vant';
 Vue.use(Button)
 // 插件导入 注册

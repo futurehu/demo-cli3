@@ -5,13 +5,11 @@
 </template>
 
 <style lang="less">
-html {
+#app {
   height: 100%;
-}
-body,#app {
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
+  font-size: 16px;
+  background-color: #f8f8f8;
+  -webkit-font-smoothing: antialiased;
 }
 
 </style>
