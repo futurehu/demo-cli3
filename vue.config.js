@@ -7,8 +7,8 @@ const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
 module.exports = {
   // 选项...
-  publicPath: process.env.NODE_ENV === 'production' ? './'
-    : '/',
+  publicPath: process.env.NODE_ENV === 'production' ? './' :
+    '/',
   outputDir: "dist",
   assetsDir: "assets",
   indexPath: "index.html",
@@ -27,7 +27,7 @@ module.exports = {
           autoprefixer(),
           // px转rem插件
           pxtorem({
-            rootValue: 37.5,
+            rootValue: 75, // 设计稿宽度的1/10
             propList: ['*'],
             // 该项仅在使用 Circle 组件时需要
             // 原因参见 https://github.com/youzan/vant/issues/1948
@@ -38,7 +38,7 @@ module.exports = {
     }
   },
   chainWebpack: config => {
-    config.resolve.alias  //别名
+    config.resolve.alias //别名
       .set('@', resolve('src')) // key,value自行定义，比如.set('@@', resolve('src/components'))
       .set('_v', resolve('src/views'))
   },
