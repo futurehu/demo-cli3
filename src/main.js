@@ -18,13 +18,9 @@ Vue.use(http, {
   timeout: 5000, //请求超时时间
   //请求拦截器
   inRequest: (inRequest) => {
-    console.log('inRequest',inRequest.headers)
-    inRequest.headers['token']="627e39cc3fc84ac886dd5511208368e8"
+    console.log('inRequest', inRequest.headers)
+    inRequest.headers['token'] = "627e39cc3fc84ac886dd5511208368e8"
     return inRequest;
-  },
-  //响应拦截器
-  inResponse: (inResponse) => {
-    return inResponse;
   }
 })
 Vue.config.productionTip = false

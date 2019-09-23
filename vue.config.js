@@ -27,7 +27,7 @@ module.exports = {
           autoprefixer(),
           // px转rem插件
           pxtorem({
-            rootValue: 75, // 设计稿宽度的1/10
+            rootValue: 37.5,
             propList: ['*'],
             // 该项仅在使用 Circle 组件时需要
             // 原因参见 https://github.com/youzan/vant/issues/1948

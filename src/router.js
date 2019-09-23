@@ -8,12 +8,7 @@ const routes = [
     path: '/',
     component: () => import('./views/my-home.vue'),
     meta: { title: '不出校门，挣生活费' },
-  },
-  {
-    path: '/about',
-    component: () => import('./views/my-about.vue'),
-    meta: { title: '校园飞人预报名' },
-  },
+  }
 ];
 
 // add route path
