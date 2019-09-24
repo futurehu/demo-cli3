@@ -11,6 +11,8 @@ import {
   Cell
 } from 'vant';
 Vue.use(Button)
+import Bridge from './utils/JSbridge'
+Vue.prototype.$bridge = Bridge
 // 插件导入 注册
 import http from './utils/http'
 Vue.use(http, {
@@ -18,8 +20,8 @@ Vue.use(http, {
   timeout: 5000, //请求超时时间
   //请求拦截器
   inRequest: (inRequest) => {
-    console.log('inRequest', inRequest.headers)
-    inRequest.headers['token'] = "627e39cc3fc84ac886dd5511208368e8"
+    // console.log('inRequest', inRequest.headers)
+    // inRequest.headers['token'] = "627e39cc3fc84ac886dd5511208368e8"
     return inRequest;
   }
 })
