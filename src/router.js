@@ -4,12 +4,25 @@ import Router from 'vue-router';
 Vue.use(Router);
 
 const routes = [{
-  path: '/',
-  component: () => import('./views/my-home.vue'),
-  meta: {
-    title: '首页'
+    path: '*',
+    redirect: '/home',
   },
-}];
+  {
+    name: 'home',
+    path: '/home',
+    component: () => import('./views/my-home.vue'),
+    meta: {
+      title: '首页'
+    }
+  }, {
+    name: 'my',
+    path: '/my',
+    component: () => import('./views/my/my.vue'),
+    meta: {
+      title: '个人中心'
+    }
+  }
+];
 
 // add route path
 routes.forEach(route => {

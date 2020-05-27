@@ -9,8 +9,8 @@ module.exports = {
   // 选项...
   publicPath: process.env.NODE_ENV === 'production' ? './' :
     '/',
-  outputDir: "dist",
-  assetsDir: "assets",
+  outputDir: "dist",//将构建好的文件输出到哪里
+  assetsDir: "assets",//放置生成的静态资源(js、css、img、fonts)的目录
   indexPath: "index.html",
   filenameHashing: true,
   pages: undefined,
@@ -20,6 +20,14 @@ module.exports = {
   productionSourceMap: false,
   crossorigin: undefined,
   integrity: false,
+  pluginOptions: {
+    'style-resources-loader': {
+      preProcessor: 'less',
+      patterns: [
+        path.resolve(__dirname, './src/assets/css/varibles.less'),
+      ],
+    },
+  },
   css: {
     loaderOptions: {
       postcss: {
@@ -46,8 +54,7 @@ module.exports = {
     // 设置代理
     proxy: {
       "/nljz": {
-        // target: 'http://10.81.108.44:8099',//本地
-        target: "https://hbmini.hnocse.com:8443",
+        target: 'http://10.81.108.44:8099',//本地
         changOrigin: true, //开启代理：在本地会创建一个虚拟服务端，然后发送请求的数据，并同时接收请求的数据，这样服务端和服务端进行数据的交互就不会有跨域问题
       }
     }

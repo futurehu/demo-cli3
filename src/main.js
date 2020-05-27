@@ -10,9 +10,7 @@ import {
   Button,
   Cell
 } from 'vant';
-Vue.use(Button)
-import Bridge from './utils/JSbridge'
-Vue.prototype.$bridge = Bridge
+Vue.use(Button).use(Cell)
 // 插件导入 注册
 import http from './utils/http'
 Vue.use(http, {

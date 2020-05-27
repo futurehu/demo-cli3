@@ -5,22 +5,41 @@
       <van-button type="warning">警告按钮</van-button>
       <van-button type="primary">主要按钮</van-button>
     </div>
+    <van-action-sheet v-model="show" :actions="actions" @select="onSelect" />
   </div>
 </template>
 
 <script>
+import Vue from "vue";
+import { ActionSheet } from "vant";
+
+Vue.use(ActionSheet);
 export default {
   name: "MyHome",
   components: {},
   props: {},
   data() {
-    return {};
+    return {
+      show: false,
+      actions: [
+        { name: "选项" },
+        { name: "选项" },
+        { name: "选项", subname: "描述信息" }
+      ]
+    };
   },
 
   computed: {},
   created() {},
 
-  methods: {}
+  methods: {
+    onSelect(item) {
+      // 默认情况下点击选项时不会自动收起
+      // 可以通过 close-on-click-action 属性开启自动收起
+      this.show = false;
+      Toast(item.name);
+    }
+  }
 };
 </script>
 <style lang="less" scoped>

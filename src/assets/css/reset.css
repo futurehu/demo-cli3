@@ -150,6 +150,47 @@ button {
   text-overflow: ellipsis;
   word-break: break-all;
 }
+/*字体大小 生成22/24/26/28/30/32/40/60/80像素对应的rem字体 */
+.r11 {
+  font-size: 0.29rem !important;
+  line-height: 0.29rem;
+}
+.r12 {
+  font-size: 0.32rem !important;
+  line-height: 0.32rem;
+}
+.r13 {
+  font-size: 0.35rem !important;
+  line-height: 0.35rem;
+}
+.r14 {
+  font-size: 0.37rem !important;
+  line-height: 0.37rem;
+}
+.r15 {
+  font-size: 0.4rem !important;
+  line-height: 0.4rem;
+}
+.r16 {
+  font-size: 0.43rem !important;
+  line-height: 0.43rem;
+}
+.r17 {
+  font-size: 0.45rem !important;
+  line-height: 0.45rem;
+}
+.r18 {
+  font-size: 0.48rem !important;
+  line-height: 0.48rem;
+}
+.r19 {
+  font-size: 0.51rem !important;
+  line-height: 0.51rem;
+}
+.r20 {
+  font-size: 0.53rem !important;
+  line-height: 0.53rem;
+}
 .cr:after {
   content: '';
   clear: both;
