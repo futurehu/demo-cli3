@@ -11,6 +11,11 @@ import {
   Cell
 } from 'vant';
 Vue.use(Button).use(Cell)
+import 'fullpage.js/vendors/scrolloverflow' // Optional. When using scrollOverflow:true
+import './assets/css/fullpage.min.css'//整屏滚动样式
+import VueFullPage from 'vue-fullpage.js'
+
+Vue.use(VueFullPage);
 // 插件导入 注册
 import http from './utils/http'
 Vue.use(http, {
