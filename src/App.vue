@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <router-view />
-    <!-- <tabbar></tabbar> -->
+    <tabbar  v-if="$route.meta.showBottom"></tabbar>
   </div>
 </template>
 <script>
@@ -22,5 +22,14 @@ export default {
   font-size: 16px;
   background-color: #f8f8f8;
   -webkit-font-smoothing: antialiased;
+  .van-nav-bar__title {
+    color: #fff;
+  }
+  .van-nav-bar .van-icon {
+    color: #fff;
+  }
+  .van-nav-bar {
+    background: #197CFF;
+  }
 }
 </style>

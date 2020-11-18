@@ -1,111 +1,148 @@
 <template>
   <div class="home">
-    <full-page ref="fullpage" :options="options" id="fullpage">
-      <div class="section bg">
-        <Cheader></Cheader>
-        <div class="text-slogan">
-          <h3>
-            培养行业一流技术
-            <br />打造行业一流公司
-          </h3>
-          <p>
-            CULTIVATE THE FIRST-CLASS TECHNOLOGY IN THE INDUSTRY
-            AND BUILD THE FIRST-CLASS COMPANY IN THE INDUSTRY
-          </p>
-        </div>
-      </div>
-      <div class="section bg2">
-        <Cheader></Cheader>
-        <div class="m-video">
-          <video
-            autoplay
-            loop
-            muted
-            controls
-            poster
-            type="video/mp4"
-            webkit-playsinline="true"
-            x-webkit-airplay="true"
-            playsinline="true"
-            x5-video-player-type="h5"
-            x5-video-orientation="h5"
-            x5-video-player-fullscreen="true"
-          >
-            <source src="https://v1.cecdn.yun300.cn/100001_2003195183/东陆高科6.25去掉十五载.mp4" />
-            <source src="https://v1.cecdn.yun300.cn/100001_2003195183/东陆高科6.25去掉十五载.mp4" />
-          </video>
-        </div>
-        <h3>河南油田工程咨询股份有限公司</h3>
-        <div class="line"></div>
-        <div class="m-des">成立于1993年，是一所集工程咨询、安全评价、环境影响评价、工程设计、信息软件开发等为一体的“产、学、研”并举的综合性技术服务机构。</div>
-        <div class="m-module">
-          <div class="module-item" v-for="(item,index) in moduleList" :key="index">
-            <img :src="item.img" alt />
-            <span>{{item.text}}</span>
+    <van-nav-bar title="首页" right-text="按钮">
+      <template #right>
+        <van-icon name="close" size="18" @click="loginOut" />
+      </template>
+    </van-nav-bar>
+    <div style="background:#fff;">
+      <!-- 问候语 -->
+      <section class="greep-wrap">
+        <div class="greet morning-greet">
+          <div class="tip">
+            <div class="top">
+              <p>{{greet}}好！胡伟</p>
+            </div>
+            <div class="time">{{year}} {{day}}</div>
           </div>
         </div>
-        <div class="m-more">查看更多>></div>
-      </div>
-      <div class="section bg2 active news-center">
-        <Cheader></Cheader>
-        <h3>新闻中心</h3>
-        <van-divider :style="{ color: '#f5f5f5', borderColor: '#f5f5f5', padding: '0 16px'}">
-          <span style="font-size:18px;font-style: italic;color: '#f5f5f5'">News Center</span>
-        </van-divider>
-        <!-- <van-tabs type="card" v-model="active" color='#00458e' background='transparent' borderColor='red'>
-          <van-tab title="公司要闻" title-style="color:#fff;">内容 1</van-tab>
-          <van-tab title="信息公告" title-style="color:#fff;">内容 2</van-tab>
-          <van-tab title="行业资讯" title-style="color:#fff;border-color:red;">内容 3</van-tab>
-        </van-tabs>-->
-        <div class="tab-wrap">
-          <div
-            class="van-tab"
-            :style="{margin:index==1?'0 10px':''}"
-            v-for="(tab,index) in tabList"
+      </section>
+      <div class="tong-title">
+        <section>
+          <span
+            class="m-tab"
+            v-for="(tab,index) in tabArr"
             :key="index"
-            :class="{'tab-active':index==active}"
+            :style="{'margin-left':index==1?'.5rem':''}"
+            :class="{'m-tab-active':index==lightIndex}"
             @click="handleTab(index)"
-          >
-            <span class="van-tab__text van-tab__text--ellipsis">{{tab}}</span>
-          </div>
-          <!-- <div class="van-tab" style="margin:0 8px;">
-            <span class="van-tab__text van-tab__text--ellipsis">信息公告</span>
-          </div>
-          <div class="van-tab">
-            <span class="van-tab__text van-tab__text--ellipsis">行业资讯</span>
-          </div>-->
-        </div>
-        <div class="news">
-          <!-- <div class="tong-title van-hairline--bottom">
-            <span>最新动态</span>
-            <span @click="toList()"></span>
-          </div>-->
-          <ul class="news-wrap">
-            <li class="van-hairline--bottom" v-for="(item,index) in news_list" :key="index">
-              <div
-                class="left"
-                :style="`background: url(http://oa.hnocse.com:30008${item.imgurl}) no-repeat`"
-              ></div>
-              <div class="right">
-                <div class="title mutiple-overflow">{{item.title}}</div>
-                <div class="r-bottom">
-                  <span>发表时间：{{item.tjsj}}</span>
-                  <span>来源：{{item.source}}</span>
-                </div>
-              </div>
-            </li>
-          </ul>
-        </div>
+          >{{tab.name}}</span>
+          <!-- <span class="m-tab" style="margin-left:.5rem;"></span> -->
+        </section>
       </div>
-    </full-page>
+    </div>
+    <!-- 检查任务 -->
+    <div v-for="(item,index) in 3" :key="index" class="spjl-cell" v-if="lightIndex==0">
+      <van-cell-group>
+        <van-cell>
+          <!-- 使用 title 插槽来自定义标题 -->
+          <template #title>
+            <span class="custom-title">12-81井钻井工程</span>
+            <van-tag plain round style="margin-left:10px;" color="#EF1600">待检查</van-tag>
+          </template>
+          <template slot="right-icon">
+            <span style="color:#666666;">2020-10-26</span>
+          </template>
+        </van-cell>
+        <van-cell>
+          <p>
+            施工队伍：
+            中原钻三40485队
+          </p>
+        </van-cell>
+        <van-cell>
+          <p>
+            建设单位：
+            一厂
+          </p>
+        </van-cell>
+        <van-cell>
+          <p>
+            开工作业类别：
+            钻井->一开
+          </p>
+        </van-cell>
+        <van-cell>
+          <p>
+            职责：
+            成员
+          </p>
+        </van-cell>
+        <van-cell>
+          <p>
+            验收时间：
+            2020-10-26
+          </p>
+        </van-cell>
+        <van-cell>
+          <div class="btn">
+            <van-button type="info" size="small">去检查</van-button>
+            <van-button type="primary" size="small">检查结束</van-button>
+          </div>
+        </van-cell>
+      </van-cell-group>
+    </div>
+    <!-- 待验收 -->
+    <div v-for="(item,index) in 3" :key="index" class="spjl-cell" v-if="lightIndex==1">
+      <van-cell-group>
+        <van-cell>
+          <!-- 使用 title 插槽来自定义标题 -->
+          <template #title>
+            <span class="custom-title">12-81井钻井工程</span>
+            <van-tag plain round style="margin:10px;" color="#EF1600">待验收</van-tag>
+          </template>
+          <template slot="right-icon">
+            <span style="color:#666666;">2020-10-26</span>
+          </template>
+        </van-cell>
+        <van-cell>
+          <p>
+            施工队伍：
+            中原钻三40485队
+          </p>
+        </van-cell>
+        <van-cell>
+          <p>
+            建设单位：
+            一厂
+          </p>
+        </van-cell>
+        <van-cell>
+          <p>
+            开工作业类别：
+            钻井->一开
+          </p>
+        </van-cell>
+        <van-cell>
+          <p>
+            职责：
+            成员
+          </p>
+        </van-cell>
+        <van-cell>
+          <p>
+            验收时间：
+            2020-10-26
+          </p>
+        </van-cell>
+        <van-cell>
+          <div class="btn">
+            <van-button type="info" size="small" color="#65A2FB">查看全部</van-button>
+            <van-button type="primary" size="small" color="#43CCA5">查看问题</van-button>
+            <van-button type="info" size="small" color="#FF9649">个人意见</van-button>
+            <van-button type="primary" size="small" color="#FF5117">验收结果</van-button>
+          </div>
+        </van-cell>
+      </van-cell-group>
+    </div>
   </div>
 </template>
 
 <script>
+let moment = require("moment");
+moment.locale("zh-cn"); //设置中文
 import Vue from "vue";
-import Cheader from "../components/header/header";
 import { ActionSheet, Divider } from "vant";
-
 Vue.use(ActionSheet).use(Divider);
 import { Tab, Tabs } from "vant";
 
@@ -113,199 +150,156 @@ Vue.use(Tab);
 Vue.use(Tabs);
 export default {
   name: "OcseHome",
-  components: {
-    Cheader
-  },
+  components: {},
   props: {},
   data() {
     return {
-      active: 0,
-      options: {
-        licenseKey: null,
-        navigation: false,
-        verticalCentered: false,
-        navigationPosition: "right",
-        menu: "#menu",
-        anchors: ["page1", "page2", "page3"],
-        sectionsColor: []
-      },
-      moduleList: [
+      lightIndex: 1, //当前高亮
+      tabArr: [
         {
-          img: require("../assets/images/公司概况.png"),
-          text: "公司概况"
+          name: "检查任务"
         },
         {
-          img: require("../assets/images/企业文化.png"),
-          text: "企业文化"
-        },
-        {
-          img: require("../assets/images/发展历程.png"),
-          text: "发展历程"
-        },
-        {
-          img: require("../assets/images/执业资质.png"),
-          text: "执业资质"
+          name: "待验收"
         }
       ],
-      tabList: ["公司要闻", "信息公告", "行业资讯"],
-      news_list: [] //新闻
+      year: "", //月份
+      day: "", //星期
+      greet: "" //问候语
     };
   },
 
   computed: {},
-  created() {},
+  created() {
+    this.year = moment().format("M月D日");
+    this.day = moment().format("dddd");
+    this.greet = this.getGreetings();
+  },
 
   methods: {
+    // 退出登录
+    loginOut() {
+      if (this.browser.versions.android) {
+        window.android.logout();
+      } else if (this.browser.versions.ios) {
+        try {
+          window.webkit.messageHandlers.logout.postMessage('');
+        } catch (e) {}
+      }
+    },
     handleTab(index) {
       this.active = index;
+    },
+    handleTab(i) {
+      this.lightIndex = i;
+    },
+    //   获取问候语
+    getGreetings() {
+      var now = new Date();
+      var times = now.getHours();
+      // console.log("times", times);
+      var whe = parseInt(times);
+      if (times >= 6 && times < 12) {
+        this.isMorning = true;
+        this.isNoon = false;
+        this.isEvening = false;
+        return "上午";
+      }
+      if (times >= 12 && times < 18) {
+        this.isNoon = true;
+        this.isMorning = false;
+        this.isEvening = false;
+        return "下午";
+      }
+      if (times >= 18 || times < 6) {
+        this.isEvening = true;
+        this.isMorning = false;
+        this.isNoon = false;
+        return "晚上";
+      }
     }
   }
 };
 </script>
 <style lang="less" scoped>
-.bg {
-  background: url("../assets/images/m_bg1.png") no-repeat;
-  background-size: cover;
+.spjl-cell {
+  margin-bottom: 10px;
+}
+.morning-greet {
+  background: url("../assets/images/banner .png") no-repeat;
   background-position: center;
+  background-size: contain;
 }
-.bg2 {
-  background: url("../assets/images/m_bg3.png") no-repeat;
-  background-size: cover;
-  background-position: center;
-}
-.text-slogan {
-  h3 {
-    text-align: center;
-    padding-top: 50px;
-    font-family: PingFang-SC-Heavy;
-    font-size: 26px;
-    font-weight: 600;
-    font-style: italic;
-    font-stretch: normal;
-    line-height: 36px;
-    letter-spacing: 0px;
-    color: #ffffff;
-    text-shadow: 0px 2px 0px #000000;
+.home {
+  background-color: #f8f8f8;
+  padding-bottom: 50px;
+  .btn {
+    float: right;
+    button {
+      margin: 0 5px;
+    }
   }
-  p {
-    letter-spacing: 0px;
-    color: #ffffff;
-    opacity: 0.6;
-    font-size: 11px;
-    text-align: center;
-    padding-top: 15px;
-    // font-weight: 100;
+  .greep-wrap {
+    padding: 0.2rem;
+    padding-bottom: 0.1rem;
   }
-}
-.m-video {
-  width: 320px;
-  // height: 165px;
-  margin: 0 auto;
-  padding: 40px 0;
-  margin-top: 20px;
-  video {
+  .greet {
+    position: relative;
     width: 100%;
-  }
-}
-.bg2 {
-  h3 {
-    text-align: center;
-    color: #fff;
-    font-weight: bold;
-    letter-spacing: 2px;
-  }
-  .m-des {
-    color: #f5f5f5;
-    text-indent: 2em;
-    text-align: justify;
-    padding: 25px 15px;
-    font-size: 14px;
-  }
-  .line {
-    height: 2px;
-    width: 60px;
-    color: #fff;
-    margin: 0 auto;
-    background-color: #fff;
-    margin-top: 15px;
-  }
-  .m-module {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    .module-item {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      border: 1px solid #f5f5f5;
-      border-radius: 3px;
-      // padding: 5px;
-      width: 70px;
-      height: 60px;
-      margin: 0 10px;
-      img {
-        width: 20px;
-      }
-      span {
-        font-size: 14px;
-        color: #f5f5f5;
-        margin-top: 5px;
+    height: 3.4rem;
+
+    .tip {
+      // display: flex;
+      // flex-direction: column;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 120px;
+      color: #fff;
+      .top {
+        display: flex;
+        // margin-bottom: 0.24rem;
+        align-items: center;
+        p {
+          font-size: 20px;
+          font-weight: 500;
+          margin-right: 0.2rem;
+          text-shadow: 0 2px 4px rgba(11, 105, 82, 0.9);
+        }
+        .time {
+          padding-top: 0.1rem;
+          font-size: 0.25rem;
+          text-shadow: 0 2px 4px rgba(11, 105, 82, 0.9);
+        }
       }
     }
   }
-  .m-more {
-    text-align: center;
-    color: #ffffff;
-    opacity: 0.7;
-    padding-top: 30px;
-    // text-decoration: #f5f5f5;
-  }
-}
-.news-center {
-  h3 {
-    padding-top: 20px;
-  }
-}
-.tab-wrap {
-  display: flex;
-  padding: 0 20px;
-  .van-tab {
-    color: #f5f5f5;
-    border: 1px solid #f5f5f5;
-    padding: 4px 0;
-  }
-}
-.tab-active {
-  background-color: #00458e;
-  border: 1px solid #00458e !important;
-  transition: linear .5s;
-}
-// 最新动态
-.news {
   .tong-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0.2rem;
-    & > span:first-of-type {
-      background-color: #fff;
-      font-weight: 800;
+    padding-bottom: 0.2rem;
+    padding-left: 15px;
+    .m-tab {
       position: relative;
-      font-size: 17px;
+      display: inline-block;
+      font-weight: 800;
+      // font-size: 0.36rem;
+      font-size: 16px;
     }
-    & > span:last-of-type {
-      color: rgb(153, 153, 153);
-      font-size: 0.28rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      // padding-right: .2rem;
-      // background: url("../assets/images/toMore.png") no-repeat;
-      background-size: 80%;
-      background-position: center;
-      width: 46px;
-      height: 20px;
+    .m-tab-active {
+      color: rgb(0, 115, 254);
+      // transition:all linear .2s;
+      &::after {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -0.16rem;
+        content: "";
+        width: 1.4rem;
+        height: 3px;
+        background-color: rgb(0, 115, 254);
+      }
     }
   }
 }

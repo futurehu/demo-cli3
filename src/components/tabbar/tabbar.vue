@@ -26,30 +26,19 @@ export default {
           normal: require("../../assets/images/index.png"),
           active: require("../../assets/images/index-active.png")
         },
+         {
+          name: "checkList",
+          title: "验收检查",
+          normal: require("../../assets/images/check.png"),
+          active: require("../../assets/images/check-active.png")
+        },
         {
-          name: "my",
-          title: "我的",
-          normal: require("../../assets/images/ring.png"),
-          active: require("../../assets/images/ring-active.png")
+          name: "acceptList",
+          title: "验收会",
+          normal: require("../../assets/images/accept.png"),
+          active: require("../../assets/images/accept-active.png")
         }
-        // {
-        //   name: "message",
-        //   title: "消息",
-        //   normal: require("../common/icon/message.png"),
-        //   active: require("../common/icon/message.png")
-        // },
-        // {
-        //   name: "cart",
-        //   title: "购物车",
-        //   normal: require("../common/icon/cart.png"),
-        //   active: require("../common/icon/cart_ac.png")
-        // },
-        // {
-        //   name: "mine",
-        //   title: "我的",
-        //   normal: require("../common/icon/mine.png"),
-        //   active: require("../common/icon/mine_ac.png")
-        // }
+       
       ]
     };
   },
@@ -75,8 +64,8 @@ export default {
 <style lang="less" scoped>
 @import '../../assets/css/varibles.less';
 .active_tab img {
-  width: 26px;
-  height: 26px;
+  width: 20px;
+  height: 20px;
 }
 
 .van-tabbar-item--active {
